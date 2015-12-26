@@ -1,0 +1,4 @@
+= simple_form_for @target do |f|
+  = f.input :name, label: 'Name', error: 'The name is mandatory please.'
+  = f.input :business, label: 'Business', error: 'The business is mandatory please.'
+  = f.button :submit
