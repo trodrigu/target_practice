@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :target do
-    name "Bob"
-    business "McDonalds"
+    name Faker::Name.name
+    business Faker::Company.name
   end
 end
