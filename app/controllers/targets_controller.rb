@@ -1,14 +1,15 @@
 class TargetsController < ApplicationController
 
   def index
+    @targets = Target.all
   end
 
   def create
-    @target = Target.new(target_params)
+    @target = EmailPermutator.new(target_params).create_target
     if @target.save
       redirect_to @target
     else
-      flash[:danger] = 'Something was incorrect'
+      #flash[:danger] = 'Something was incorrect'
       render 'new'
     end
   end
@@ -22,6 +23,17 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    params.require(:target).permit(:name, :business)
+    #create_first_and_last_name
+    params.require(:target).permit(:first_name, :last_name, :business, :email)
   end
+
+  private
+
+  def create_first_and_last_name
+    name = params[:target].delete(:name)
+    first_name = name.split.first
+    last_name = name.split.second
+    params[:target].merge!(first_name: first_name, last_name: last_name)
+  end
+
 end
