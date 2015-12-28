@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 RSpec.describe Target, type: :model do
@@ -7,8 +8,14 @@ RSpec.describe Target, type: :model do
     expect(target).to be_valid
   end
 
-  context 'with name' do
-    it 'returns 
+  it 'saves a domain' do
+    expect(target.domain).to eq Target.last.domain
+  end
+
+  it 'saves a first and last name' do
+    expect(target.first_name).to eq Target.last.first_name
+    expect(target.last_name).to eq Target.last.last_name
+  end
 
   context 'without name' do
     it 'returns invalid' do
@@ -22,4 +29,5 @@ RSpec.describe Target, type: :model do
       target.business = ''
     end
   end
+
 end

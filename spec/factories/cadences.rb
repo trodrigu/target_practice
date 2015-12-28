@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :cadence do
-    permutation "#{firstname}#{domain}"
-    target
+    permutation '#{@first_name}'
   end
-
 end
