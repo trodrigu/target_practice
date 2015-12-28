@@ -81,6 +81,10 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     dnsruby (1.59.0)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
     email_verifier (0.1.0)
       dnsruby (>= 1.5)
     erubis (2.7.0)
@@ -255,6 +259,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
+  dotenv-rails
   email_verifier
   factory_girl_rails
   faker
