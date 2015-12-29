@@ -13,7 +13,6 @@ class TargetsController < ApplicationController
     if @target.save
       redirect_to @target
     else
-      #flash[:danger] = 'Something was incorrect'
       render 'new'
     end
   end
@@ -27,7 +26,6 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    #create_first_and_last_name
     params.require(:target).permit(:first_name, :last_name, :business, :email)
   end
 
