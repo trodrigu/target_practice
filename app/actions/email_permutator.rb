@@ -5,11 +5,11 @@ class EmailPermutator
 
   def initialize(params)
     @email = params[:email]
-    @first_name = params[:first_name]
-    @fi = @first_name.first
-    @last_name = params[:last_name]
+    @first_name = params[:first_name].downcase
+    @fi = @first_name.first.downcase
+    @last_name = params[:last_name].downcase
     @middle_name = params[:middle_name]
-    @business = params[:business]
+    @business = params[:business].downcase
     @domain = domain
 
     if @middle_name
@@ -23,7 +23,8 @@ class EmailPermutator
 
   def create_target
     CURRENT_CADENCES.each do |c|
-      @email = c.permutation % { fn: @first_name, ln: @last_name, mn: @middle_name, fi: @fi, mi: @mi, li: @li } + @domain
+      #@email = c.permutation % { fn: @first_name, ln: @last_name, mn: @middle_name, fi: @fi, mi: @mi, li: @li } + @domain
+      @email = eval('"' + c.permutation + '"') + @domain
       target_params = {
         email: @email.downcase,
         first_name: @first_name,
