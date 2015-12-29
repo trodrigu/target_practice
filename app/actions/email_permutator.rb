@@ -23,7 +23,6 @@ class EmailPermutator
 
   def create_target
     CURRENT_CADENCES.each do |c|
-      #@email = c.permutation % { fn: @first_name, ln: @last_name, mn: @middle_name, fi: @fi, mi: @mi, li: @li } + @domain
       @email = eval('"' + c.permutation + '"') + @domain
       target_params = {
         email: @email.downcase,
