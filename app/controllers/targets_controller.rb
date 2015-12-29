@@ -6,6 +6,10 @@ class TargetsController < ApplicationController
 
   def create
     @target = EmailPermutator.new(target_params).create_target
+    unless @target.class.ancestors.include?(ActiveRecord::Base)
+      render 'what' 
+      return false
+    end
     if @target.save
       redirect_to @target
     else
