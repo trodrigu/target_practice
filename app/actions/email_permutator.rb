@@ -1,7 +1,7 @@
 class EmailPermutator
   include ActiveRecord::Validations
 
-  CURRENT_CADENCES = Cadence.all
+  CURRENT_CADENCES = Cadence.all.reverse
 
   def initialize(params)
     @email = params[:email]
