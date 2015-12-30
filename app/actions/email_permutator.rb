@@ -23,23 +23,19 @@ class EmailPermutator
 
   def create_target
     #TODO: collect all valids not just return first!
+    target_params = {
+      first_name: @first_name,
+      last_name: @last_name,
+      business: @business,
+      domain: @domain
+    }
+    @target = Target.new(target_params)
     CURRENT_CADENCES.each do |c|
-      @email = eval('"' + c.permutation + '"') + @domain
-      target_params = {
-        first_name: @first_name,
-        last_name: @last_name,
-        business: @business,
-        domain: @domain
-      }
-      target = Target.new(target_params)
-      target.emails << Email.new(email: @email.downcase)
-      if target.valid?
-        target.save
-        return target
-      else
-        @email = nil
-      end
+      test_email = eval('"' + c.permutation + '"') + @domain
+      email = Email.new(email: test_email.downcase)
+      @target.emails << email if email.valid?
     end
+    @target.save
   end
   
   def domain
