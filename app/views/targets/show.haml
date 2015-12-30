@@ -1,6 +1,8 @@
 %p= @target.first_name
 %p= @target.last_name
 %p= @target.business
-%p= @target.email
+%ul
+- @target.emails.each do |e|
+  %li= @target.email
 
 
