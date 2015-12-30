@@ -10,7 +10,7 @@ class TargetsController < ApplicationController
       render 'what' 
       return false
     end
-    if @target.save
+    if @target.valid?
       redirect_to @target
     else
       render 'new'
@@ -26,7 +26,7 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    params.require(:target).permit(:first_name, :last_name, :business, :email)
+    params.require(:target).permit(:first_name, :last_name, :business)
   end
 
   private
