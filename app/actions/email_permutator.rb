@@ -31,9 +31,9 @@ class EmailPermutator
     }
     @target = Target.new(target_params)
     CURRENT_CADENCES.each do |c|
-      test_email = eval('"' + c.permutation + '"') + @domain
-      email = Email.new(email: test_email.downcase)
-      @target.emails << email if email.valid?
+      email_str = eval('"' + c.permutation + '"') + @domain
+      test_email = Email.new(email: email_str.downcase)
+      @target.emails << test_email if test_email.valid?
     end
     @target.save
   end
