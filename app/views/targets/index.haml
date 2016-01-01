@@ -1,7 +1,8 @@
 - @targets.each do |t|
+  %br
   %p= t.first_name
   %p= t.last_name
   %p= t.business
   %ul
     - t.emails.each do |e|
-      %li= t.email
+      %li= e.email
