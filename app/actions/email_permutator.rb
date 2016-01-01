@@ -36,6 +36,7 @@ class EmailPermutator
       @target.emails << test_email if test_email.valid?
     end
     @target.save
+    @target
   end
   
   def domain
